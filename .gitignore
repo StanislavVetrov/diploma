@@ -5,3 +5,6 @@
 /.vs/Conference/v15/Server/sqlite3/storage.ide-wal
 /Conference.sln.DotSettings.user
 /Conference/obj/x86/Debug/Conference.csproj.CoreCompileInputs.cache
+bin
+obj
+/Conference/obj
