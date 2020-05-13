@@ -135,17 +135,17 @@ namespace Conference
 			{
 				for (int j = 0; j < s; j++)
 				{
-					_WMoments[parLayer][parI][j] = //_Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];
-						ALPHA * _WMoments[parLayer][parI][j] + (1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];//!!!
+					_WMoments[parLayer][parI][j] = _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];
+						// ALPHA * _WMoments[parLayer][parI][j] + (1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];//!!!
 				}
 			}
 			else
 			{
 				for (int j = 0; j < s; j++)
 				{
-					_WMoments[parLayer][parI][j] = //_Nu * _Deltas[parLayer][parI] * parInput[j];
-						ALPHA * _WMoments[parLayer][parI][j] + 
-						(1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * parInput[j];//!!
+					_WMoments[parLayer][parI][j] = _Nu * _Deltas[parLayer][parI] * parInput[j];
+						//ALPHA * _WMoments[parLayer][parI][j] + 
+						//(1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * parInput[j];//!!
 				}
 			}
 		}

@@ -148,7 +148,7 @@ namespace Conference
 				answers[9] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 
 				DateTime timestart = DateTime.Now;
-				net.Teach(inputs, answers, 10000000, 0.0001, null);
+				net.Teach(inputs, answers, 10000000, 0.00001, null);
 				DateTime timeFinish = DateTime.Now;
 				TimeSpan span = timeFinish - timestart;
 
@@ -187,16 +187,6 @@ namespace Conference
                 1,1,1,1,1,1
             };
 
-				/*double[] example3 = new double[42]
-			{
-                0,0,1,1,0,0,
-                0,1,0,0,1,0,
-                0,0,0,0,1,0,
-                0,0,1,1,0,0,
-                0,0,0,0,1,0,
-                0,1,1,1,0,0,
-                0,0,0,0,0,0
-            };*/
 
 			char exam1 = NeuronNet.AnalyzeAnswer(net.Ask(example1));
 			char exam2 = NeuronNet.AnalyzeAnswer(net.Ask(example2));
