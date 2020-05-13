@@ -15,10 +15,10 @@ namespace Conference
 	{
 		private double ALPHA = 0.01;
 
-		/// <summary>
-		/// Коэффициент влияния вычислимых поправок
-		/// </summary>
-		private double _Nu = 0.2;
+        /// <summary>
+        /// Коэффициент влияния вычислимых поправок
+        /// </summary>
+        private double _Nu = 0.2;
 
 		/// <summary>
 		/// Массив весов [l][i][j],
@@ -135,17 +135,17 @@ namespace Conference
 			{
 				for (int j = 0; j < s; j++)
 				{
-					_WMoments[parLayer][parI][j] = _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];
-						//ALPHA * _WMoments[parLayer][parI][j] + (1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];//!!!
+					_WMoments[parLayer][parI][j] = //_Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];
+						ALPHA * _WMoments[parLayer][parI][j] + (1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * _Outs[parLayer - 1][j];//!!!
 				}
 			}
 			else
 			{
 				for (int j = 0; j < s; j++)
 				{
-					_WMoments[parLayer][parI][j] = _Nu * _Deltas[parLayer][parI] * parInput[j];
-						//ALPHA * _WMoments[parLayer][parI][j] + 
-						//(1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * parInput[j];//!!
+					_WMoments[parLayer][parI][j] = //_Nu * _Deltas[parLayer][parI] * parInput[j];
+						ALPHA * _WMoments[parLayer][parI][j] + 
+						(1 - ALPHA) * _Nu * _Deltas[parLayer][parI] * parInput[j];//!!
 				}
 			}
 		}
@@ -236,12 +236,12 @@ namespace Conference
 					}
 
 					
-					/*if (totalError <= parErrorLevel)
+					if (totalError <= parErrorLevel)
 					{
-						parDispaly(totalError.ToString(), age.ToString());
+						//parDispaly(totalError.ToString(), age.ToString());
 						
 						return;
-					}*/
+					}
 				}
 				lists.Add(totalError);
 			}

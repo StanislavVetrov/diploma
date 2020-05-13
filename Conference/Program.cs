@@ -18,27 +18,9 @@ namespace Conference
 			double error = 0;
 			int maxEpoch = 0;
 
-			//while (key.Key != ConsoleKey.Escape)
-			//{
-				/*Console.Clear();
-				Console.WriteLine("*****************************");
 
-				Console.Write("Введите кол-во скрытых слоёв: ");
-				countOfLayer = Convert.ToInt32(Console.ReadLine());
 
-				Console.Write("Введите кол-во нейронов во входном слое: ");
-				countOfInputs = Convert.ToInt32(Console.ReadLine());
-
-				Console.Write("Введите кол-во нейронов во выходном слое: ");
-				countOfOuts = Convert.ToInt32(Console.ReadLine());
-
-				Console.Write("Введите желаемую ошибку: ");
-				error = Convert.ToDouble(Console.ReadLine());
-
-				Console.Write("Введите максимальное кол-во эпох: ");
-				maxEpoch = Convert.ToInt32(Console.ReadLine());*/
-
-				int[] counts = new int[1] { 20 };
+				int[] counts = new int[1] { 30 };
 				NeuronNet net = new NeuronNet(counts, 42/*countOfInputs*/, 10/*countOfOuts*/);
 
 				double[][] inputs = new double[10][];
