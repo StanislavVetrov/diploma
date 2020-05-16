@@ -20,7 +20,7 @@ namespace Conference
 
 
 
-            int[] counts = new int[1] { 30 };
+            int[] counts = new int[1] { 25 };
             NeuronNet net = new NeuronNet(counts, 42/*countOfInputs*/, 10/*countOfOuts*/);
 
             double[][] inputs = new double[10][];
@@ -148,7 +148,7 @@ namespace Conference
             answers[9] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 
             DateTime timestart = DateTime.Now;
-            net.Teach(inputs, answers, 10000000, 0.000001, null);
+            net.Teach(inputs, answers, 10000000, 0.1, null);
             DateTime timeFinish = DateTime.Now;
             TimeSpan span = timeFinish - timestart;
 

@@ -235,15 +235,16 @@ namespace Conference
 						}
 					}
 
-					
-					if (totalError <= parErrorLevel)
-					{
-						//parDispaly(totalError.ToString(), age.ToString());
-						
-						return;
-					}
 				}
-				lists.Add(totalError);
+
+                if (totalError <= parErrorLevel)
+                {
+                    //parDispaly(totalError.ToString(), age.ToString());
+
+                    return;
+                }
+
+                lists.Add(totalError);
 			}
 		}
 
