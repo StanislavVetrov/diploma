@@ -20,7 +20,7 @@ namespace Conference
 
 
 
-            int[] counts = new int[1] { 25 };
+            int[] counts = new int[1] { 30 };
             NeuronNet net = new NeuronNet(counts, 42/*countOfInputs*/, 10/*countOfOuts*/);
 
             double[][] inputs = new double[10][];
