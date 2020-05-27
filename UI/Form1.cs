@@ -1,14 +1,30 @@
-﻿using System;
+﻿using Conference;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Conference
+namespace UI
 {
-    class Program
+    public partial class Form1 : Form
     {
         const int answerCount = 10;
+        public static NeuronNet net;
+        public static char exam1;
+        public static char exam2;
+        public static char exam3;
 
-        static void Main(string[] args)
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void обучитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
 
@@ -21,7 +37,7 @@ namespace Conference
 
 
             int[] counts = new int[1] { 30 };
-            NeuronNet net = new NeuronNet(counts, 100/*countOfInputs*/, 10/*countOfOuts*/);
+            net = new NeuronNet(counts, 100/*countOfInputs*/, 10/*countOfOuts*/);
 
             double[][] inputs = new double[10][];
             double[][] answers = new double[10][];
@@ -178,7 +194,7 @@ namespace Conference
             answers[9] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 
             DateTime timestart = DateTime.Now;
-            net.Teach(inputs, answers, 10000000, 0.1, null);
+            net.Teach(inputs, answers, 100000, 0.1, null);
             DateTime timeFinish = DateTime.Now;
             TimeSpan span = timeFinish - timestart;
 
@@ -237,17 +253,69 @@ namespace Conference
                 0,0,0,0,1,1,1,0,0,0
             };
 
+            exam1 = NeuronNet.AnalyzeAnswer(net.Ask(example1));
+            exam2 = NeuronNet.AnalyzeAnswer(net.Ask(example2));
+            exam3 = NeuronNet.AnalyzeAnswer(net.Ask(example3));
 
-            char exam1 = NeuronNet.AnalyzeAnswer(net.Ask(example1));
-            char exam2 = NeuronNet.AnalyzeAnswer(net.Ask(example2));
-            char exam3 = NeuronNet.AnalyzeAnswer(net.Ask(example3));
-
-            Console.WriteLine("Символ 1 примера: " + exam1);
-            Console.WriteLine("Символ 2 примера: " + exam2);
-            Console.WriteLine("Символ 3 примера: " + exam3);
-
-            key = Console.ReadKey();
+            MessageBox.Show("Обучилась");
             //}
+        }
+
+        double[] example1 = new double[100]
+            {
+                0,1,1,1,1,1,1,1,1,0,
+                1,0,1,0,0,0,0,0,0,1,
+                1,0,0,0,0,0,0,0,0,1,
+                1,0,0,0,0,0,0,1,0,1,
+                1,1,1,0,1,1,0,1,1,1,
+                1,0,0,0,0,0,0,0,0,1,
+                1,0,0,1,0,0,0,0,0,1,
+                1,1,0,0,0,0,0,0,0,1,
+                1,0,0,0,0,0,0,0,0,1,
+                1,1,1,1,1,1,1,1,1,0
+            };
+
+        double[] example2 = new double[100]
+        {
+                1,1,1,1,1,1,1,1,1,1,
+                0,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,1,
+                1,0,0,0,0,0,0,0,0,0,
+                1,1,1,1,1,1,1,1,1,0,
+                0,0,0,0,0,0,0,0,0,1,
+                0,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,0,
+                0,0,0,0,0,0,0,0,0,1,
+                0,1,1,1,1,1,1,1,1,0
+        };
+
+        double[] example3 = new double[100]
+        {
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,1,1,0,0,0,0,
+                0,0,0,1,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,0,1,0,0,0,0,
+                0,0,0,0,1,1,1,0,0,0
+        };
+
+        private void ex1_Click(object sender, EventArgs e)
+        {
+          textBox3.Text = exam1.ToString();
+        }
+
+        private void ex2_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = exam2.ToString();
+        }
+
+         private void ex3_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = exam3.ToString();
         }
     }
 }
