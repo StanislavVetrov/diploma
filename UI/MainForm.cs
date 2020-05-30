@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         const int answerCount = 10;
         public static NeuronNet net;
@@ -19,7 +19,7 @@ namespace UI
         public static char exam2;
         public static char exam3;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
