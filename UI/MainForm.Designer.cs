@@ -84,7 +84,7 @@
             this.обучитьToolStripMenuItem.Name = "обучитьToolStripMenuItem";
             this.обучитьToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.обучитьToolStripMenuItem.Text = "Обучить";
-            this.обучитьToolStripMenuItem.Click += new System.EventHandler(this.обучитьToolStripMenuItem_Click);
+            this.обучитьToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 

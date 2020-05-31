@@ -24,7 +24,7 @@ namespace UI
             InitializeComponent();
         }
 
-        private void обучитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConsoleKeyInfo key = new ConsoleKeyInfo();
 
