@@ -149,7 +149,12 @@ namespace Conference
 				}
 			}
 		}
+        ShowError _errorSize;
 
+        public void errorRegister (ShowError errorSize)
+        {
+            _errorSize = errorSize;
+        }
 
 		/// <summary>
 		/// Обучение сети на примере.
@@ -169,7 +174,10 @@ namespace Conference
 				if (parDispaly != null)
 					parDispaly(totalError.ToString(), age.ToString());
 				else
-					Console.WriteLine(totalError.ToString());
+                {   if(_errorSize != null)
+                        _errorSize(totalError.ToString(), age.ToString());
+                }
+					//Console.WriteLine(totalError.ToString());
 				
 				totalError = 0;
 				

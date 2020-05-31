@@ -195,6 +195,7 @@ namespace UI
 
             DateTime timestart = DateTime.Now;
             net.Teach(inputs, answers, 100000, 0.1, null);
+            net.errorRegister(new ShowError (Display));
             DateTime timeFinish = DateTime.Now;
             TimeSpan span = timeFinish - timestart;
 
@@ -302,6 +303,8 @@ namespace UI
                 0,0,0,0,0,1,0,0,0,0,
                 0,0,0,0,1,1,1,0,0,0
         };
+
+        private void Display(string parError, string parAge) => errorShow.Text += parError;
 
         private void ex1_Click(object sender, EventArgs e)
         {
