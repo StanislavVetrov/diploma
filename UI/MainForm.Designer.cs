@@ -188,7 +188,7 @@
             this.errorShow.Location = new System.Drawing.Point(280, 227);
             this.errorShow.Multiline = true;
             this.errorShow.Name = "errorShow";
-            this.errorShow.Size = new System.Drawing.Size(214, 37);
+            this.errorShow.Size = new System.Drawing.Size(252, 103);
             this.errorShow.TabIndex = 12;
             // 
             // label2

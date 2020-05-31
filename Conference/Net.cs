@@ -4,13 +4,6 @@ using System.Text;
 
 namespace Conference
 {
-	/// <summary>
-	/// Делегат для отображения ошибки.
-	/// </summary>
-	/// <param name="parError">Текущая ошибка.</param>
-	/// <param name="parAge">Текущая эпоха.</param>
-	public delegate void ShowError(string parError, string parAge);
-
 	public class NeuronNet
 	{
 		private double ALPHA = 0.01;
@@ -149,12 +142,6 @@ namespace Conference
 				}
 			}
 		}
-        ShowError _errorSize;
-
-        public void errorRegister (ShowError errorSize)
-        {
-            _errorSize = errorSize;
-        }
 
 		/// <summary>
 		/// Обучение сети на примере.
@@ -173,11 +160,8 @@ namespace Conference
 			{
 				if (parDispaly != null)
 					parDispaly(totalError.ToString(), age.ToString());
-				else
-                {   if(_errorSize != null)
-                        _errorSize(totalError.ToString(), age.ToString());
-                }
-					//Console.WriteLine(totalError.ToString());
+                else
+				    Console.WriteLine(totalError.ToString());
 				
 				totalError = 0;
 				
@@ -247,8 +231,6 @@ namespace Conference
 
                 if (totalError <= parErrorLevel)
                 {
-                    //parDispaly(totalError.ToString(), age.ToString());
-
                     return;
                 }
 

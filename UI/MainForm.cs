@@ -34,8 +34,6 @@ namespace UI
             double error = 0;
             int maxEpoch = 0;
 
-
-
             int[] counts = new int[1] { 30 };
             net = new NeuronNet(counts, 100/*countOfInputs*/, 10/*countOfOuts*/);
 
@@ -193,9 +191,11 @@ namespace UI
             };
             answers[9] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 
+            this.errorShow.Clear();
             DateTime timestart = DateTime.Now;
-            net.Teach(inputs, answers, 100000, 0.1, null);
-            net.errorRegister(new ShowError (Display));
+            net.Teach(inputs, answers, 100000, 0.1, (x, y) => 
+                this.errorShow.AppendText(string.Format(@"Ошибка: {0}, эпоха: {1}{2}", x, y, Environment.NewLine)));
+            
             DateTime timeFinish = DateTime.Now;
             TimeSpan span = timeFinish - timestart;
 
