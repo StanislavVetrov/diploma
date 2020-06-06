@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,156 +41,27 @@ namespace UI
             double[][] inputs = new double[10][];
             double[][] answers = new double[10][];
 
-            inputs[0] = new double[100]
-            {
-                0,1,1,1,1,1,1,1,1,0,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,0
-            };
-            answers[0] = new double[answerCount] { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+            string pathToInputs = inputsBox.Text;
 
-            inputs[1] = new double[100]
-            {
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,1,1,0,0,0,0,
-                0,0,0,1,0,1,0,0,0,0,
-                0,0,1,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,0,1,0,0,0,0
-            };
-            answers[1] = new double[answerCount] { 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 };
+            string[] readText = File.ReadAllLines(pathToInputs);
 
-            inputs[2] = new double[100]
+            for (int i = 0; i < 10; i++)
             {
-                1,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,1,0,
-                0,0,0,0,0,0,0,1,0,0,
-                0,0,0,0,0,0,1,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,1,0,0,0,0,0,
-                0,0,0,1,0,0,0,0,0,0,
-                0,0,1,0,0,0,0,0,0,0,
-                0,1,0,0,0,0,0,0,0,0,
-                1,1,1,1,1,1,1,1,1,1
-            };
-            answers[2] = new double[answerCount] { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 };
+                var a = readText[i].ToCharArray().Select(c => Char.ToString(c)).ToArray();
+                double[] doubles = Array.ConvertAll(a, new Converter<string, double>(Double.Parse));
+                inputs[i] = doubles;
+            }
 
-            inputs[3] = new double[100]
+            string pathToAnswers = answersBox.Text;
+
+            readText = File.ReadAllLines(pathToAnswers);
+
+            for (int i = 0; i < 10; i++)
             {
-                1,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                1,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                1,1,1,1,1,1,1,1,1,1
-            };
-            answers[3] = new double[answerCount] { 0, 0, 0, 1, 0, 0, 0, 0, 0, 0 };
-
-            inputs[4] = new double[100]
-            {
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1
-            };
-            answers[4] = new double[answerCount] { 0, 0, 0, 0, 1, 0, 0, 0, 0, 0 };
-
-            inputs[5] = new double[100]
-            {
-                1,1,1,1,1,1,1,1,1,1,
-                1,0,0,0,0,0,0,0,0,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,1,1,1,1,1,1,1,1,0,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,0
-            };
-            answers[5] = new double[answerCount] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0 };
-
-            inputs[6] = new double[100]
-            {
-                0,1,1,1,1,1,1,1,1,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,0,0,0,0,0,0,0,0,0,
-                1,1,1,1,1,1,1,1,1,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,0
-            };
-            answers[6] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 1, 0, 0, 0 };
-
-
-            inputs[7] = new double[100]
-            {
-                1,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,1,0,
-                0,0,0,0,0,0,0,1,0,0,
-                0,0,0,0,0,0,1,0,0,0,
-                0,0,0,0,0,1,0,0,0,0,
-                0,0,0,0,1,0,0,0,0,0,
-                0,0,0,1,0,0,0,0,0,0,
-                0,0,1,0,0,0,0,0,0,0,
-                0,1,0,0,0,0,0,0,0,0
-            };
-            answers[7] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 };
-
-            inputs[8] = new double[100]
-            {
-                0,1,1,1,1,1,1,1,1,0,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,1,1,1,1,1,1,1,1,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,0
-            };
-            answers[8] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 };
-
-            inputs[9] = new double[100]
-            {
-                0,1,1,1,1,1,1,1,1,0,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                1,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,0,0,0,0,0,0,0,0,1,
-                0,1,1,1,1,1,1,1,1,0
-            };
-            answers[9] = new double[answerCount] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
+                var a = readText[i].Split(',').Select(c => c.Trim()).ToArray();
+                double[] doubles = Array.ConvertAll(a, new Converter<string, double>(Double.Parse));
+                answers[i] = doubles;
+            }
 
             this.errorShow.Clear();
             DateTime timestart = DateTime.Now;
@@ -199,7 +71,7 @@ namespace UI
             DateTime timeFinish = DateTime.Now;
             TimeSpan span = timeFinish - timestart;
 
-            Console.WriteLine("Время потраченной на обучение: " + span.ToString());
+            Console.WriteLine("Время, потраченное на обучение: " + span.ToString());
 
             char c0 = NeuronNet.AnalyzeAnswer(net.Ask(inputs[0]));
             char c1 = NeuronNet.AnalyzeAnswer(net.Ask(inputs[1]));
@@ -259,7 +131,7 @@ namespace UI
             exam3 = NeuronNet.AnalyzeAnswer(net.Ask(example3));
 
             MessageBox.Show("Обучилась");
-            //}
+            
         }
 
         double[] example1 = new double[100]
@@ -319,6 +191,20 @@ namespace UI
          private void ex3_Click(object sender, EventArgs e)
         {
             textBox3.Text = exam3.ToString();
+        }
+
+        private void SubmitInputs_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            string filename = openFileDialog1.FileName;
+            inputsBox.Text = filename;
+        }
+
+        private void SubmitAnswers_Click(object sender, EventArgs e)
+        {
+            openFileDialog2.ShowDialog();
+            string filename = openFileDialog2.FileName;
+            answersBox.Text = filename;
         }
     }
 }

@@ -35,10 +35,8 @@
             this.обучитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.какИспользоватьПрограммуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.inputsBox = new System.Windows.Forms.TextBox();
+            this.answersBox = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ex1 = new System.Windows.Forms.Button();
@@ -46,6 +44,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.errorShow = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.SubmitInputs = new System.Windows.Forms.Button();
+            this.SubmitAnswers = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,41 +103,23 @@
             this.какИспользоватьПрограммуToolStripMenuItem.Size = new System.Drawing.Size(237, 22);
             this.какИспользоватьПрограммуToolStripMenuItem.Text = "Как использовать программу";
             // 
-            // textBox1
+            // inputsBox
             // 
-            this.textBox1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox1.Location = new System.Drawing.Point(211, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Путь к файлу с обучающей выборкой ...";
+            this.inputsBox.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.inputsBox.Location = new System.Drawing.Point(211, 71);
+            this.inputsBox.Name = "inputsBox";
+            this.inputsBox.Size = new System.Drawing.Size(215, 20);
+            this.inputsBox.TabIndex = 1;
+            this.inputsBox.Text = "Путь к файлу с обучающей выборкой ...";
             // 
-            // button1
+            // answersBox
             // 
-            this.button1.Location = new System.Drawing.Point(120, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Указать";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(120, 114);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Указать";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox2.Location = new System.Drawing.Point(211, 114);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 20);
-            this.textBox2.TabIndex = 4;
-            this.textBox2.Text = "Путь к файлу с примерами...";
+            this.answersBox.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.answersBox.Location = new System.Drawing.Point(211, 114);
+            this.answersBox.Name = "answersBox";
+            this.answersBox.Size = new System.Drawing.Size(215, 20);
+            this.answersBox.TabIndex = 4;
+            this.answersBox.Text = "Путь к файлу с примерами...";
             // 
             // textBox3
             // 
@@ -200,6 +184,34 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Величина ошибки:";
             // 
+            // SubmitInputs
+            // 
+            this.SubmitInputs.Location = new System.Drawing.Point(120, 71);
+            this.SubmitInputs.Name = "SubmitInputs";
+            this.SubmitInputs.Size = new System.Drawing.Size(75, 23);
+            this.SubmitInputs.TabIndex = 2;
+            this.SubmitInputs.Text = "Указать";
+            this.SubmitInputs.UseVisualStyleBackColor = true;
+            this.SubmitInputs.Click += new System.EventHandler(this.SubmitInputs_Click);
+            // 
+            // SubmitAnswers
+            // 
+            this.SubmitAnswers.Location = new System.Drawing.Point(120, 114);
+            this.SubmitAnswers.Name = "SubmitAnswers";
+            this.SubmitAnswers.Size = new System.Drawing.Size(75, 23);
+            this.SubmitAnswers.TabIndex = 3;
+            this.SubmitAnswers.Text = "Указать";
+            this.SubmitAnswers.UseVisualStyleBackColor = true;
+            this.SubmitAnswers.Click += new System.EventHandler(this.SubmitAnswers_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,10 +224,10 @@
             this.Controls.Add(this.ex1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.answersBox);
+            this.Controls.Add(this.SubmitAnswers);
+            this.Controls.Add(this.SubmitInputs);
+            this.Controls.Add(this.inputsBox);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -236,10 +248,8 @@
         private System.Windows.Forms.ToolStripMenuItem обучитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem какИспользоватьПрограммуToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox inputsBox;
+        private System.Windows.Forms.TextBox answersBox;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ex3;
@@ -249,6 +259,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox errorShow;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button SubmitInputs;
+        private System.Windows.Forms.Button SubmitAnswers;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
     }
 }
 
